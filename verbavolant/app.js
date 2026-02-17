@@ -5,7 +5,33 @@ let words = [];
 let remaining = [];
 
 const elWord = document.getElementById("word");
-const elSub = document.getElementById("sub");
+const elCard = document.querySelector(".card");
+
+function fitWord() {
+  if (!elCard || !elWord) return;
+
+  // Reset inline size so we can measure from a known state
+  elWord.style.fontSize = "";
+  elWord.style.whiteSpace = "nowrap";
+
+  // Available space inside the card (safety margins)
+  const availableW = elCard.clientWidth - 80;
+  const availableH = elCard.clientHeight - 80;
+
+  // Start big and scale down until it fits
+  let size = 140;
+  const min = 44;
+
+  while (size >= min) {
+    elWord.style.fontSize = `${size}px`;
+
+    if (elWord.scrollWidth <= availableW && elWord.scrollHeight <= availableH) {
+      break;
+    }
+    size -= 2;
+  }
+}
+
 const elRemaining = document.getElementById("remaining");
 const elTotal = document.getElementById("total");
 const elInput = document.getElementById("wordsInput");
@@ -38,21 +64,20 @@ function showMessage(text) {
 function pick() {
   if (remaining.length === 0) {
     elWord.textContent = "Finite!";
-    elSub.textContent = "Premi “Reset” o applica un nuovo elenco.";
     syncStats();
     return;
   }
   const i = Math.floor(Math.random() * remaining.length);
   const chosen = remaining.splice(i, 1)[0];
   elWord.textContent = chosen;
-  elSub.textContent = "Leggi bene: accento, quantità, chiarezza.";
+  fitWord();
   syncStats();
 }
 
 function reset() {
   remaining = [...words];
   elWord.textContent = "Pronti.";
-  elSub.textContent = "Premi “Estrai”.";
+  fitWord();
   syncStats();
 }
 
@@ -65,7 +90,7 @@ function applyList() {
   words = [...newList];
   remaining = [...words];
   elWord.textContent = "Elenco aggiornato.";
-  elSub.textContent = "Ora puoi estrarre.";
+  fitWord();
   syncStats();
   showMessage(`Caricate ${words.length} parole.`);
 }
@@ -107,13 +132,12 @@ async function loadWordsFromFile() {
     elInput.value = words.join("\n");
 
     elWord.textContent = "Pronti.";
-    elSub.textContent = "Premi “Estrai”.";
+    fitWord();
 
     syncStats();
     showMessage(`Caricate ${words.length} parole da words.txt`);
   } catch (error) {
     elWord.textContent = "Errore caricamento parole.";
-    elSub.textContent = "Verifica words.txt";
     showMessage("Impossibile leggere words.txt");
   }
 }
@@ -133,5 +157,10 @@ window.addEventListener("keydown", (e) => {
   if (k === "f") toggleFullscreen();
 });
 
+window.addEventListener("resize", () => {
+  fitWord();
+});
+
 // Init
 loadWordsFromFile();
+fitWord();
