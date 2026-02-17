@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Verba volant</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main class="stage" aria-label="Verba volant">
+    <header class="topbar">
+      <div class="brand">
+        <div class="seal" aria-hidden="true">VV</div>
+        <div class="titles">
+          <div class="kicker">LVDI</div>
+          <h1>Verba volant</h1>
+        </div>
+      </div>
+
+      <div class="stats" aria-label="Statistiche">
+        <div class="pill"><span id="remaining">—</span> rimaste</div>
+        <div class="pill"><span id="total">—</span> totali</div>
+      </div>
+    </header>
+
+    <section class="card" aria-label="Parola estratta">
+      <div id="word" class="word">Premi “Estrai”</div>
+      <div id="sub" class="sub">Senza ripetizioni • Adatto a LIM</div>
+    </section>
+
+    <section class="controls" aria-label="Controlli">
+      <button class="btn primary" id="btnExtract">Estrai</button>
+      <button class="btn" id="btnReset">Reset</button>
+      <button class="btn ghost" id="btnFullscreen">Schermo intero</button>
+    </section>
+
+    <section class="panel" aria-label="Lista parole">
+      <details>
+        <summary>Gestione elenco (incolla / modifica)</summary>
+        <div class="panel-inner">
+          <p class="hint">
+            Una parola per riga. Premi <strong>Applica</strong> per aggiornare l’elenco.
+          </p>
+
+          <textarea id="wordsInput" spellcheck="false"></textarea>
+
+          <div class="panel-actions">
+            <button class="btn" id="btnApply">Applica elenco</button>
+            <button class="btn ghost" id="btnLoadDemo">Carica demo latina</button>
+            <span class="tiny" id="msg"></span>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <footer class="footer">
+      <span>© Ludi • Verba volant</span>
+      <span class="dot">•</span>
+      <span class="tiny">Suggerimento LIM: ⌘⌃F (Mac) / F11 (Windows)</span>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
