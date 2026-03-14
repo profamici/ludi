@@ -1,0 +1,45 @@
+
+
+<!DOCTYPE html>
+<html lang="la">
+<head>
+<meta charset="UTF-8">
+<title>Verbum Cadens</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<img class="character left" src="../../assets/img/paphnutia.png" alt="Paphnutia">
+<img class="character right" src="../../assets/img/paphnutius.png" alt="Paphnutius">
+
+<h1>Verbum Cadens</h1>
+
+<div class="hud">
+    <div>Puncta: <span id="score">0</span></div>
+    <div>Vitae: <span id="lives">3</span></div>
+    <div>Gradus: <span id="level">1</span></div>
+</div>
+
+<div id="game-area">
+    <div id="falling-word">—</div>
+</div>
+
+<div class="persons">
+    <button data-person="ego">ego</button>
+    <button data-person="tu">tu</button>
+    <button data-person="ille">ille / illa</button>
+    <button data-person="nos">nos</button>
+    <button data-person="vos">vos</button>
+    <button data-person="illi">illi / illae</button>
+</div>
+
+<div class="controls">
+    <button onclick="startGame()">Incipe</button>
+    <button onclick="resetGame()">Lude iterum</button>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
