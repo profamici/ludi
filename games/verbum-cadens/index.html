@@ -20,6 +20,10 @@
     <div>Vitae: <span id="lives">3</span></div>
     <div>Gradus: <span id="level">1</span></div>
 </div>
+<div class="player-panel">
+    <label for="player-name">Nomen ludentis:</label>
+    <input id="player-name" type="text" maxlength="20" placeholder="Scrivi il nome">
+</div>
 
 <div id="game-area">
     <div id="falling-word">—</div>
@@ -37,6 +41,10 @@
 <div class="controls">
     <button onclick="startGame()">Incipe</button>
     <button onclick="resetGame()">Lude iterum</button>
+</div>
+<div class="leaderboard">
+    <h2>Tabula Optima</h2>
+    <ol id="leaderboard-list"></ol>
 </div>
 
 <script src="script.js"></script>

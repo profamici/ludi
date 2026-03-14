@@ -97,3 +97,46 @@ h1 {
 .right {
     right: 20px;
 }
+
+
+.player-panel {
+    margin: 10px auto 20px auto;
+    font-size: 20px;
+    color: #4a3118;
+}
+
+#player-name {
+    font-size: 18px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #8b5a2b;
+    margin-left: 8px;
+}
+
+.leaderboard {
+    position: fixed;
+    top: 140px;
+    left: 30px;
+    width: 320px;
+    background: rgba(255,255,255,0.88);
+    border-radius: 12px;
+    padding: 14px 18px 18px 18px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    z-index: 3;
+}
+
+.leaderboard h2 {
+    margin-top: 4px;
+    margin-bottom: 10px;
+    color: #3a2a1a;
+}
+
+#leaderboard-list {
+    text-align: left;
+    font-size: 18px;
+    padding-left: 22px;
+}
+
+#leaderboard-list li {
+    margin: 4px 0;
+}

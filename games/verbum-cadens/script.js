@@ -22,6 +22,9 @@ const levelEl = document.getElementById("level");
 const fallingWordEl = document.getElementById("falling-word");
 const gameAreaEl = document.getElementById("game-area");
 const personButtons = document.querySelectorAll(".persons button");
+const playerNameEl = document.getElementById("player-name");
+const leaderboardListEl = document.getElementById("leaderboard-list");
+const LEADERBOARD_KEY = "verbum-cadens-top10";
 
 async function loadVerbs() {
     try {
@@ -40,6 +43,74 @@ async function loadVerbs() {
 
 function randomItem(array) {
     return array[Math.floor(Math.random() * array.length)];
+}
+
+function normalizePlayerName(name) {
+    return name.trim().replace(/\s+/g, " ");
+}
+
+function getPlayerName() {
+    if (!playerNameEl) return "Ludens";
+    const normalized = normalizePlayerName(playerNameEl.value || "");
+    return normalized || "Ludens";
+}
+
+function loadLeaderboard() {
+    try {
+        const raw = localStorage.getItem(LEADERBOARD_KEY);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+    } catch (error) {
+        console.error("Errore nel caricamento della classifica:", error);
+        return [];
+    }
+}
+
+function saveLeaderboard(entries) {
+    localStorage.setItem(LEADERBOARD_KEY, JSON.stringify(entries));
+}
+
+function renderLeaderboard() {
+    if (!leaderboardListEl) return;
+
+    const entries = loadLeaderboard();
+    leaderboardListEl.innerHTML = "";
+
+    if (!entries.length) {
+        const li = document.createElement("li");
+        li.textContent = "Nemo adhuc ludit";
+        leaderboardListEl.appendChild(li);
+        return;
+    }
+
+    entries.forEach((entry) => {
+        const li = document.createElement("li");
+        li.textContent = `${entry.name} — ${entry.score}`;
+        leaderboardListEl.appendChild(li);
+    });
+}
+
+function updateLeaderboard(name, newScore) {
+    const playerName = normalizePlayerName(name) || "Ludens";
+    let entries = loadLeaderboard();
+
+    const existing = entries.find((entry) => entry.name.toLowerCase() === playerName.toLowerCase());
+
+    if (existing) {
+        if (newScore > existing.score) {
+            existing.score = newScore;
+            existing.name = playerName;
+        }
+    } else {
+        entries.push({ name: playerName, score: newScore });
+    }
+
+    entries.sort((a, b) => b.score - a.score || a.name.localeCompare(b.name, "it"));
+    entries = entries.slice(0, 10);
+
+    saveLeaderboard(entries);
+    renderLeaderboard();
 }
 
 function updateHud() {
@@ -126,7 +197,7 @@ function gameLoop() {
 function startGame() {
     if (!verbs.length) return;
     if (gameRunning) return;
-
+    playerNameEl.value = getPlayerName();
     gameRunning = true;
     animationId = requestAnimationFrame(gameLoop);
 }
@@ -136,6 +207,7 @@ function endGame() {
     if (animationId) {
         cancelAnimationFrame(animationId);
     }
+    updateLeaderboard(getPlayerName(), score);
     fallingWordEl.textContent = "Finis!";
     updateLevelDisplay();
 }
@@ -185,4 +257,5 @@ personButtons.forEach((button) => {
 
 updateHud();
 updateLevelDisplay();
+renderLeaderboard();
 loadVerbs();
