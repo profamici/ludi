@@ -113,6 +113,11 @@ function updateLeaderboard(name, newScore) {
     renderLeaderboard();
 }
 
+function clearLeaderboard() {
+    localStorage.removeItem(LEADERBOARD_KEY);
+    renderLeaderboard();
+}
+
 function updateHud() {
     scoreEl.textContent = score;
     livesEl.textContent = lives;

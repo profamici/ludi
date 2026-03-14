@@ -140,3 +140,18 @@ h1 {
 #leaderboard-list li {
     margin: 4px 0;
 }
+
+.clear-board {
+    margin-top: 12px;
+    font-size: 16px;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #8b5a2b;
+    color: white;
+    cursor: pointer;
+}
+
+.clear-board:hover {
+    background-color: #a56a32;
+}
