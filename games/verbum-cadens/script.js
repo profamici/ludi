@@ -15,6 +15,7 @@ let fallingY = 0;
 let gameRunning = false;
 let animationId = null;
 let currentLevel = 1;
+let resultsHistory = [];
 
 const scoreEl = document.getElementById("score");
 const livesEl = document.getElementById("lives");
@@ -24,6 +25,8 @@ const gameAreaEl = document.getElementById("game-area");
 const personButtons = document.querySelectorAll(".persons button");
 const playerNameEl = document.getElementById("player-name");
 const leaderboardListEl = document.getElementById("leaderboard-list");
+const resultsPanelEl = document.getElementById("results-panel");
+const resultsListEl = document.getElementById("results-list");
 const LEADERBOARD_KEY = "verbum-cadens-top10";
 
 async function loadVerbs() {
@@ -185,6 +188,12 @@ function gameLoop() {
     updateLevelDisplay();
 
     if (fallingY >= limit) {
+        resultsHistory.push({
+            form: currentVerb.forms[currentPerson],
+            chosen: null,
+            correct: currentPerson,
+            isRight: false
+        });
         lives -= 1;
         updateHud();
 
@@ -203,6 +212,10 @@ function startGame() {
     if (!verbs.length) return;
     if (gameRunning) return;
     playerNameEl.value = getPlayerName();
+    resultsHistory = [];
+    resultsListEl.innerHTML = "";
+
+    hideResults();
     gameRunning = true;
     animationId = requestAnimationFrame(gameLoop);
 }
@@ -213,6 +226,7 @@ function endGame() {
         cancelAnimationFrame(animationId);
     }
     updateLeaderboard(getPlayerName(), score);
+    showResults();
     fallingWordEl.textContent = "Finis!";
     updateLevelDisplay();
 }
@@ -226,9 +240,65 @@ function resetGame() {
     score = 0;
     lives = 3;
     currentLevel = 1;
+    resultsHistory = [];
     updateHud();
     updateLevelDisplay();
+    hideResults();
     resetWord();
+}
+
+function personLabel(person) {
+    const labels = {
+        ego: "ego",
+        tu: "tu",
+        ille: "ille / illa",
+        nos: "nos",
+        vos: "vos",
+        illi: "illi / illae"
+    };
+    return labels[person] || person;
+}
+
+function renderResults() {
+    if (!resultsPanelEl || !resultsListEl) return;
+
+    resultsListEl.innerHTML = "";
+
+    if (!resultsHistory.length) {
+        const li = document.createElement("li");
+        li.textContent = "Nulla responsa";
+        resultsListEl.appendChild(li);
+        return;
+    }
+
+    resultsHistory.forEach((entry) => {
+        const li = document.createElement("li");
+
+        if (entry.isRight) {
+            li.classList.add("result-correct");
+            li.textContent = `${entry.form} → ${personLabel(entry.chosen)} ✓`;
+        } else if (entry.chosen) {
+            li.classList.add("result-wrong");
+            li.textContent = `${entry.form} → ${personLabel(entry.chosen)} ✗ (rectum: ${personLabel(entry.correct)})`;
+        } else {
+            li.classList.add("result-wrong");
+            li.textContent = `${entry.form} → — ✗ (rectum: ${personLabel(entry.correct)})`;
+        }
+
+        resultsListEl.appendChild(li);
+    });
+}
+
+function hideResults() {
+    if (!resultsPanelEl || !resultsListEl) return;
+    resultsPanelEl.style.display = "none";
+    resultsListEl.innerHTML = "";
+}
+
+function showResults() {
+    if (!resultsPanelEl) return;
+    resultsPanelEl.style.display = "block";
+    renderResults();
 }
 
 personButtons.forEach((button) => {
@@ -237,6 +307,12 @@ personButtons.forEach((button) => {
         gameRunning = false;
 
         const selectedPerson = button.dataset.person;
+        resultsHistory.push({
+            form: currentVerb.forms[currentPerson],
+            chosen: selectedPerson,
+            correct: currentPerson,
+            isRight: selectedPerson === currentPerson
+        });
 
         if (selectedPerson === currentPerson) {
             score += 1;
@@ -260,6 +336,7 @@ personButtons.forEach((button) => {
     });
 });
 
+hideResults();
 updateHud();
 updateLevelDisplay();
 renderLeaderboard();
