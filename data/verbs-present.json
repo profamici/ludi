@@ -1,0 +1,249 @@
+[
+  {
+    "infinitive": "amāre",
+    "conjugation": 1,
+    "meaning_it": "amare",
+    "forms": {
+      "ego": "amo",
+      "tu": "amas",
+      "ille": "amat",
+      "nos": "amamus",
+      "vos": "amatis",
+      "illi": "amant"
+    }
+  },
+  {
+    "infinitive": "laudāre",
+    "conjugation": 1,
+    "meaning_it": "lodare",
+    "forms": {
+      "ego": "laudo",
+      "tu": "laudas",
+      "ille": "laudat",
+      "nos": "laudamus",
+      "vos": "laudatis",
+      "illi": "laudant"
+    }
+  },
+  {
+    "infinitive": "portāre",
+    "conjugation": 1,
+    "meaning_it": "portare",
+    "forms": {
+      "ego": "porto",
+      "tu": "portas",
+      "ille": "portat",
+      "nos": "portamus",
+      "vos": "portatis",
+      "illi": "portant"
+    }
+  },
+  {
+    "infinitive": "habitāre",
+    "conjugation": 1,
+    "meaning_it": "abitare",
+    "forms": {
+      "ego": "habito",
+      "tu": "habitas",
+      "ille": "habitat",
+      "nos": "habitamus",
+      "vos": "habitatis",
+      "illi": "habitant"
+    }
+  },
+  {
+    "infinitive": "vocāre",
+    "conjugation": 1,
+    "meaning_it": "chiamare",
+    "forms": {
+      "ego": "voco",
+      "tu": "vocas",
+      "ille": "vocat",
+      "nos": "vocamus",
+      "vos": "vocatis",
+      "illi": "vocant"
+    }
+  },
+  {
+    "infinitive": "monēre",
+    "conjugation": 2,
+    "meaning_it": "ammonire",
+    "forms": {
+      "ego": "moneo",
+      "tu": "mones",
+      "ille": "monet",
+      "nos": "monemus",
+      "vos": "monetis",
+      "illi": "monent"
+    }
+  },
+  {
+    "infinitive": "tenēre",
+    "conjugation": 2,
+    "meaning_it": "tenere",
+    "forms": {
+      "ego": "teneo",
+      "tu": "tenes",
+      "ille": "tenet",
+      "nos": "tenemus",
+      "vos": "tenetis",
+      "illi": "tenent"
+    }
+  },
+  {
+    "infinitive": "vidēre",
+    "conjugation": 2,
+    "meaning_it": "vedere",
+    "forms": {
+      "ego": "video",
+      "tu": "vides",
+      "ille": "videt",
+      "nos": "videmus",
+      "vos": "videtis",
+      "illi": "vident"
+    }
+  },
+  {
+    "infinitive": "habēre",
+    "conjugation": 2,
+    "meaning_it": "avere",
+    "forms": {
+      "ego": "habeo",
+      "tu": "habes",
+      "ille": "habet",
+      "nos": "habemus",
+      "vos": "habetis",
+      "illi": "habent"
+    }
+  },
+  {
+    "infinitive": "docēre",
+    "conjugation": 2,
+    "meaning_it": "insegnare",
+    "forms": {
+      "ego": "doceo",
+      "tu": "doces",
+      "ille": "docet",
+      "nos": "docemus",
+      "vos": "docetis",
+      "illi": "docent"
+    }
+  },
+  {
+    "infinitive": "legĕre",
+    "conjugation": 3,
+    "meaning_it": "leggere",
+    "forms": {
+      "ego": "lego",
+      "tu": "legis",
+      "ille": "legit",
+      "nos": "legimus",
+      "vos": "legitis",
+      "illi": "legunt"
+    }
+  },
+  {
+    "infinitive": "mittĕre",
+    "conjugation": 3,
+    "meaning_it": "mandare",
+    "forms": {
+      "ego": "mitto",
+      "tu": "mittis",
+      "ille": "mittit",
+      "nos": "mittimus",
+      "vos": "mittitis",
+      "illi": "mittunt"
+    }
+  },
+  {
+    "infinitive": "scribĕre",
+    "conjugation": 3,
+    "meaning_it": "scrivere",
+    "forms": {
+      "ego": "scribo",
+      "tu": "scribis",
+      "ille": "scribit",
+      "nos": "scribimus",
+      "vos": "scribitis",
+      "illi": "scribunt"
+    }
+  },
+  {
+    "infinitive": "dicĕre",
+    "conjugation": 3,
+    "meaning_it": "dire",
+    "forms": {
+      "ego": "dico",
+      "tu": "dicis",
+      "ille": "dicit",
+      "nos": "dicimus",
+      "vos": "dicitis",
+      "illi": "dicunt"
+    }
+  },
+  {
+    "infinitive": "ducĕre",
+    "conjugation": 3,
+    "meaning_it": "condurre",
+    "forms": {
+      "ego": "duco",
+      "tu": "ducis",
+      "ille": "ducit",
+      "nos": "ducimus",
+      "vos": "ducitis",
+      "illi": "ducunt"
+    }
+  },
+  {
+    "infinitive": "audīre",
+    "conjugation": 4,
+    "meaning_it": "ascoltare",
+    "forms": {
+      "ego": "audio",
+      "tu": "audis",
+      "ille": "audit",
+      "nos": "audimus",
+      "vos": "auditis",
+      "illi": "audiunt"
+    }
+  },
+  {
+    "infinitive": "venīre",
+    "conjugation": 4,
+    "meaning_it": "venire",
+    "forms": {
+      "ego": "venio",
+      "tu": "venis",
+      "ille": "venit",
+      "nos": "venimus",
+      "vos": "venitis",
+      "illi": "veniunt"
+    }
+  },
+  {
+    "infinitive": "sentīre",
+    "conjugation": 4,
+    "meaning_it": "sentire",
+    "forms": {
+      "ego": "sentio",
+      "tu": "sentis",
+      "ille": "sentit",
+      "nos": "sentimus",
+      "vos": "sentitis",
+      "illi": "sentiunt"
+    }
+  },
+  {
+    "infinitive": "esse",
+    "conjugation": "irregular",
+    "meaning_it": "essere",
+    "forms": {
+      "ego": "sum",
+      "tu": "es",
+      "ille": "est",
+      "nos": "sumus",
+      "vos": "estis",
+      "illi": "sunt"
+    }
+  }
+]
