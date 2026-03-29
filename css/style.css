@@ -162,3 +162,35 @@ footer {
     font-size: 14px;
     z-index: 1;
 }
+
+.tasto-ludi {
+    /* Posizionamento in alto a sinistra */
+    position: absolute; 
+    top: 20px;
+    left: 20px;
+    z-index: 1000; /* Assicura che stia sopra gli altri elementi */
+
+    /* Stile del pulsante */
+    background-color: #A66E38; /* Marrone simile all'icona */
+    color: white;
+    font-family: "Georgia", "Times New Roman", serif; /* Font con grazie simile all'immagine */
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 16px;
+    
+    /* Effetto tridimensionale e ombra */
+    border: 3px solid #b88655; /* Bordo leggermente più chiaro per il rilievo */
+    box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.3);
+    
+    /* Animazione per l'interazione */
+    transition: all 0.2s ease-in-out;
+}
+
+/* Effetto al passaggio del mouse */
+.tasto-ludi:hover {
+    background-color: #8C5B2D;
+    transform: scale(1.05);
+    box-shadow: 3px 4px 8px rgba(0, 0, 0, 0.4);
+}
