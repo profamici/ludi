@@ -1,4 +1,4 @@
-// Verba volant — Ludi
+// Verba volant — LVDI
 // Estrazione parole senza ripetizioni + gestione elenco + fullscreen
 
 let words = [];
